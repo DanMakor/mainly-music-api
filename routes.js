@@ -33,6 +33,10 @@ router.route('/persons/createGuardian').post((req, res) => {
     personService.createGuardian(req, res);
 });
 
+router.route('/persons/createStaffMember').post((req, res) => {
+    personService.createStaffMember(req, res);
+});
+
 router.route('/persons/createFamily').post((req, res) => {
     personService.createFamily(req, res);
 });

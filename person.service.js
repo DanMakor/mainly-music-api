@@ -33,6 +33,14 @@ function createGuardian(req, res) {
     });
 }
 
+function createStaffMember(req, res) {
+    global.dbo.collection('persons').insertOne({ ...req.body, type: personType.staff }).then(document => {
+        res.status(200).send(document);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+}
+
 function createFamily(req, res) {
     const familyId = new ObjectID();
     const persons = [ 
@@ -48,9 +56,10 @@ function createFamily(req, res) {
 }
 
 function upsertDrink(req, res) {
+    console.log(req.body);
     global.dbo.collection('persons').updateOne(
         { _id: ObjectId(req.params.id) },
-        { $set: { drink: req.body }}
+        { $set: { drink: req.body.drink }}
     ).then(document => {
         res.status(200).send(document);
     }).catch(err => {
@@ -149,6 +158,7 @@ module.exports = {
     get,
     createChild,
     createGuardian,
+    createStaffMember,
     createFamily,
     upsertDrink,
     updateHasBowl
