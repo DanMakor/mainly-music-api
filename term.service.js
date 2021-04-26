@@ -10,7 +10,6 @@ function get(req, res) {
 
 function list(req, res) {
     global.dbo.collection('terms').find({}, { projection: { sessions: false }}).toArray().then(document => {
-        console.log(document);
         res.status(200).send(document);
     }).catch(err => {
         res.status(500).send(err);
@@ -38,7 +37,6 @@ function register(req, res) {
 }
 
 function updateRegistration(req, res) {
-    console.log(req.body);
     global.dbo.collection('terms').updateOne(
         { _id: ObjectId(req.params.id) },
         { $set: { 'registrations.$[element]': req.body }},

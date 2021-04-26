@@ -56,7 +56,6 @@ function createFamily(req, res) {
 }
 
 function upsertDrink(req, res) {
-    console.log(req.body);
     global.dbo.collection('persons').updateOne(
         { _id: ObjectId(req.params.id) },
         { $set: { drink: req.body.drink }}
