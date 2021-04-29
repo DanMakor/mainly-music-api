@@ -17,11 +17,15 @@ router.route('/persons/:id').get((req, res) => {
     personService.get(req, res);
 });
 
-router.route('/persons/:id/drink').post((req, res) => {
+router.route('/persons/:id').put((req, res) => {
+    personService.updatePerson(req, res);
+});
+
+router.route('/persons/:id/drink').put((req, res) => {
     personService.upsertDrink(req, res);
 });
 
-router.route('/persons/:id/hasBowl').post((req, res) => {
+router.route('/persons/:id/hasBowl').put((req, res) => {
     personService.updateHasBowl(req, res);
 });
 

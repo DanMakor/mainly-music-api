@@ -77,6 +77,17 @@ function updateHasBowl(req, res) {
     });
 }
 
+function updatePerson(req, res) {
+    global.dbo.collection('persons').updateOne(
+        { _id: ObjectId(req.params.id) },
+        { $set: req.body }
+    ).then(document => {
+        res.status(200).send(document);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+}
+
 // function getAccounts(req, res) {
 //     const docquery = Account.find({});
 //     docquery
@@ -160,7 +171,8 @@ module.exports = {
     createStaffMember,
     createFamily,
     upsertDrink,
-    updateHasBowl
+    updateHasBowl,
+    updatePerson
     // getAccountById,
     // createAccount,
     // updateAccount,
