@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const port = (process.env.PORT || 3000);
 const app = express();
-corsUris = [ "http://localhost:4200", "https://mainly-music-ui.herokuapp.com" ]
+corsUris = [ "http://localhost:4200", "https://mainly-music-ui.herokuapp.com", "http://mainly-music-ui.herokuapp.com" ]
 
 app.use(cors({ origin: corsUris }))
 app.use(bodyParser.json());
