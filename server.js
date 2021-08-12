@@ -31,8 +31,10 @@ io.on('connection', (socket) => {
     socket.on('personupdated', (person) => {
         io.emit('personupdated', person)
     });
+    
+    socket.on('personscreated', (persons) => {
+        io.emit('personscreated', persons);
+    });
 });
-
-
 
 server.listen(port, () => console.log(`API running on localhost:${port}`));
